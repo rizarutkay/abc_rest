@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "11dcf665-5428-48e8-b8f7-c5c31eac2b96",
+		"name": "Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Registry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"testpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/abc_rest/public/index.php/register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"abc_rest",
+						"public",
+						"index.php",
+						"register"
+					]
+				},
+				"description": "Kullanıcı oluşturmak için yapılan request.\r\nBody yapısı aşağıdaki gibi olmalıdır\r\n\r\n{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"testpass\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"testpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/abc_rest/public/index.php/api/login_check",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"abc_rest",
+						"public",
+						"index.php",
+						"api",
+						"login_check"
+					]
+				},
+				"description": "Yapılacak istekler için gerekli jtw token login işleminden sonra verilir ve bütün isteklerde Authorization kısmında bearer tokena koyulması gerekir\r\n\r\nbody örneği\r\n\r\n{\r\n    \"username\": \"testuser2\",\r\n    \"password\": \"testpass2\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDU4NTgzMTIsImV4cCI6MTYwNTg2MTkxMiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdHVzZXIifQ.H0TS3kHLdvk763UT_5FEKmovZ-bd9Yu5FcTvwwGuIHO1CP-DdJXGRjWm05ERsMTvk9QFs6bQOOFT-drCq-kqRArxYBzR5QJmcI8LE5_durvnMCe6tCkvIWYc4hyW-OevvWB5APfz2TCg6wT7c577mpm9pVrxqp3iRPrx0hpYbSZbF4flEiWDV0O8M5OR1E00IIjeLldNs3lRHTOewMnXR1zc6IWGtynrFxRDGRZMEZ5FCP6jle3D-qKpIxC8ZjJ4_9b_ymAOKzgESrBa3-8ny1j3MCp2en7U6X9WvH2ZP9bdKy4K_Ml2j9nQbN6huoMzcAQJXSuwZtif35cEWJ6VzkaGY35oA69pHdSuQuz7ZvNlpCCttRY5jeygezAXR4y4LIGyOK8D2EdcXHi6IjuqdQ3wt1REVM2nrXd2-BFsiVVqNbigxrpZjR01WhVhVfnKAX2WeUCN94xF6wUtKfGSkkphM2OGhN-DzRw6nyn2iI5JVTip0CCJk95Aae4LnptUCAUG_Ae7g4ZYJzoWhFhtFTel-wd2K345C_xffGwxN02zbPkb5sq4A35nZmH-VByKdEYob_zK30yNWPSWL1F6U9bAvcRNX8wBu7vgC1RMnhd8sUXw5bersG1QINpaXMuVM5g93BCl3Wo9uwJHzbPBCiSWe3QBROV-00G6UEjh1cQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n       \"productid\": \"1\",\r\n        \"quantity\": \"1\",\r\n        \"address\": \"adres\",\r\n        \"shippingDate\": \"20200218\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/abc_rest/public/index.php/api/orders",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"abc_rest",
+						"public",
+						"index.php",
+						"api",
+						"orders"
+					]
+				},
+				"description": "Siparişi oluşturmak için olan request. Loginden alınan jtw token kullanılmalıdır.\r\n\r\nBody örneği\r\n\r\n    {\r\n       \"productid\": \"1\",\r\n        \"quantity\": \"1\",\r\n        \"address\": \"adres\",\r\n        \"shippingDate\": \"20200218\"\r\n    }\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "List Orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDU4NTgzMTIsImV4cCI6MTYwNTg2MTkxMiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdHVzZXIifQ.H0TS3kHLdvk763UT_5FEKmovZ-bd9Yu5FcTvwwGuIHO1CP-DdJXGRjWm05ERsMTvk9QFs6bQOOFT-drCq-kqRArxYBzR5QJmcI8LE5_durvnMCe6tCkvIWYc4hyW-OevvWB5APfz2TCg6wT7c577mpm9pVrxqp3iRPrx0hpYbSZbF4flEiWDV0O8M5OR1E00IIjeLldNs3lRHTOewMnXR1zc6IWGtynrFxRDGRZMEZ5FCP6jle3D-qKpIxC8ZjJ4_9b_ymAOKzgESrBa3-8ny1j3MCp2en7U6X9WvH2ZP9bdKy4K_Ml2j9nQbN6huoMzcAQJXSuwZtif35cEWJ6VzkaGY35oA69pHdSuQuz7ZvNlpCCttRY5jeygezAXR4y4LIGyOK8D2EdcXHi6IjuqdQ3wt1REVM2nrXd2-BFsiVVqNbigxrpZjR01WhVhVfnKAX2WeUCN94xF6wUtKfGSkkphM2OGhN-DzRw6nyn2iI5JVTip0CCJk95Aae4LnptUCAUG_Ae7g4ZYJzoWhFhtFTel-wd2K345C_xffGwxN02zbPkb5sq4A35nZmH-VByKdEYob_zK30yNWPSWL1F6U9bAvcRNX8wBu7vgC1RMnhd8sUXw5bersG1QINpaXMuVM5g93BCl3Wo9uwJHzbPBCiSWe3QBROV-00G6UEjh1cQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/abc_rest/public/index.php/api/orders",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"abc_rest",
+						"public",
+						"index.php",
+						"api",
+						"orders"
+					]
+				},
+				"description": "Bütün siparişlerin listelendiği istek,Login isteğinde oluşan jtw token kullanılmalıdır"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDU4NTgzMTIsImV4cCI6MTYwNTg2MTkxMiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdHVzZXIifQ.H0TS3kHLdvk763UT_5FEKmovZ-bd9Yu5FcTvwwGuIHO1CP-DdJXGRjWm05ERsMTvk9QFs6bQOOFT-drCq-kqRArxYBzR5QJmcI8LE5_durvnMCe6tCkvIWYc4hyW-OevvWB5APfz2TCg6wT7c577mpm9pVrxqp3iRPrx0hpYbSZbF4flEiWDV0O8M5OR1E00IIjeLldNs3lRHTOewMnXR1zc6IWGtynrFxRDGRZMEZ5FCP6jle3D-qKpIxC8ZjJ4_9b_ymAOKzgESrBa3-8ny1j3MCp2en7U6X9WvH2ZP9bdKy4K_Ml2j9nQbN6huoMzcAQJXSuwZtif35cEWJ6VzkaGY35oA69pHdSuQuz7ZvNlpCCttRY5jeygezAXR4y4LIGyOK8D2EdcXHi6IjuqdQ3wt1REVM2nrXd2-BFsiVVqNbigxrpZjR01WhVhVfnKAX2WeUCN94xF6wUtKfGSkkphM2OGhN-DzRw6nyn2iI5JVTip0CCJk95Aae4LnptUCAUG_Ae7g4ZYJzoWhFhtFTel-wd2K345C_xffGwxN02zbPkb5sq4A35nZmH-VByKdEYob_zK30yNWPSWL1F6U9bAvcRNX8wBu7vgC1RMnhd8sUXw5bersG1QINpaXMuVM5g93BCl3Wo9uwJHzbPBCiSWe3QBROV-00G6UEjh1cQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost/abc_rest/public/index.php/api/orders/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"abc_rest",
+						"public",
+						"index.php",
+						"api",
+						"orders",
+						"1"
+					]
+				},
+				"description": "Siparişi oluşturmak için olan request. Loginden alınan jtw token kullanılmalıdır.Update,Delete ve Show için olan requestlerde url'nin sonuna orderCode koyulması gerekmektedir.\r\n(https://localhost/abc_rest/public/index.php/api/orders/1)\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Order Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n       \"productid\": \"1\",\r\n        \"quantity\": \"1\",\r\n        \"address\": \"adres\",\r\n        \"shippingDate\": \"20200218\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost/restful/public/index.php/api/posts/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"restful",
+						"public",
+						"index.php",
+						"api",
+						"posts",
+						"1"
+					]
+				},
+				"description": "Siparişi oluşturmak için olan request. Loginden alınan jtw token kullanılmalıdır.Update,Delete ve Show için olan requestlerde url'nin sonuna orderCode koyulması gerekmektedir.\r\n(https://localhost/abc_rest/public/index.php/api/orders/1)\r\nBody örneği\r\n\r\n    {\r\n       \"productid\": \"1\",\r\n        \"quantity\": \"1\",\r\n        \"address\": \"adres\",\r\n        \"shippingDate\": \"20200218\"\r\n    }\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Order Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDU4NTMzNjMsImV4cCI6MTYwNTg1Njk2Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdHVzZXIyIn0.X4wTf8sswmyO7_F8PeXKEQE4zdBKpbpsMRWVx8ITNajIa0oCVGPqCoaHan2Y8Xu0_VWBivaqedLLrBIJy5JMpErEhmK-CRxDJaPUMWsQmJHbY0-lk-eGqgSBEEmvJI1u3OJVB8mV4CE_AsrGOZ7Ey-smVsLY7kdflqdqi6YatMkgpdkyU9OUBwLHCteOGA7WO0ja1WFKijeWQaIiwhprc0iuZ4NBcISPkap7RA2QIQNbv3VgMhqeESS6-IgxR8ZUIp6I28YHTlchBLFt0s16sRMAl98zOQ0PM_6sw2dfIpvC5fOPB8kEw5YW2wDxbdnMhoPgVDbwX5taED0grNMB2TwrGz-uwPYMY5k0KHNBJVER5yiuobxpzLr5eEU6egQP9ojZg2VQTj4z4w0s1jag7QgVmWtHFVyhOjlqKx0PAbUxKSu4rbJYEtnCy5syWcYd60j_5C1YLatQoFTlIRb-is2KSuX1fS64VheMKRKcd0R8Jm699VoYsQWN31DlX1OkpfsvubkmkCLx7ec59zyBnh9TRdeg0tLQWX9Ppsu61aeLRDoL5MkQuD1fzOfHIwdNt_fPdJvMs2azvchWYXLKxC5bBpywapAbRFvn3Rh42wgdv0hPWJ45WygUyV3imIW5kxGIUYgF7aKyg7oslotWu51JaDdIOjDV2s_CVHRnGJ8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost/abc_rest/public/index.php/api/orders/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"abc_rest",
+						"public",
+						"index.php",
+						"api",
+						"orders",
+						"1"
+					]
+				},
+				"description": "Siparişi oluşturmak için olan request. Loginden alınan jtw token kullanılmalıdır.Update,Delete ve Show için olan requestlerde url'nin sonuna orderCode koyulması gerekmektedir.\r\n(https://localhost/abc_rest/public/index.php/api/orders/1)\r\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
